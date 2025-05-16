@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     libblas-dev \
     libblas3 \
     g++ \
+    libx11-dev \
+    libgtk-3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
