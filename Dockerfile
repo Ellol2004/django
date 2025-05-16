@@ -1,6 +1,9 @@
 FROM python:3.10
 
-# Install system dependencies for dlib and other libraries
+# Debug message to confirm Dockerfile usage
+RUN echo "Building with custom Dockerfile for grad_porj"
+
+# Install system dependencies for dlib
 RUN apt-get update && apt-get install -y \
     cmake \
     libopenblas-dev \
