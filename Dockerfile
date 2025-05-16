@@ -34,4 +34,4 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the application
-CMD ["gunicorn", "grad_porj.wsgi:application", "--bind", "0.0.0.0:$PORT"]
+CMD ["gunicorn", "project.wsgi:application", "--bind", "0.0.0.0:$PORT"]
