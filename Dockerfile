@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10
 
 # Install system dependencies for dlib and other libraries
 RUN apt-get update && apt-get install -y \
@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     build-essential \
     libatlas-base-dev \
+    libblas-dev \
+    libblas3 \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -21,7 +24,8 @@ COPY . .
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Install Python dependencies
+# Upgrade pip and install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the application
