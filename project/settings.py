@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
 
 CSRF_COOKIE_SECURE = False
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']  # لدومين Railway
 
 # CSRF_TRUSTED_ORIGINS = [
 #     'https://5d27-41-37-69-52.ngrok-free.app'  # الـ URL بتاع ngrok
@@ -110,12 +112,11 @@ DEFAULT_FROM_EMAIL = 'helwanuniversity82@gmail.com'  # هنا برضو تحط ا
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
