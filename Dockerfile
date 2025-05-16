@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     build-essential \
+    libatlas-base-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
