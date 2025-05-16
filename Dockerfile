@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 # Install system dependencies for dlib and other libraries
 RUN apt-get update && apt-get install -y \
@@ -16,8 +16,12 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
+# Create and activate virtual environment
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the application
-CMD ["gunicorn", "project.wsgi:application", "--bind", "0.0.0.0:$PORT"]
+CMD ["gunicorn", "grad_porj.wsgi:application", "--bind", "0.0.0.0:$PORT"]
