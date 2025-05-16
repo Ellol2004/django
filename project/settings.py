@@ -32,15 +32,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']  # لدومين Railway
+CORS_ALLOW_ALL_ORIGINS = True
 
 # CSRF_TRUSTED_ORIGINS = [
 #     'https://5d27-41-37-69-52.ngrok-free.app'  # الـ URL بتاع ngrok
 # ]
 
-SITE_DOMAIN = "http://41.45.163.12:8000/"
+SITE_DOMAIN = "http://127.0.0.1:8000/"
 CSRF_COOKIE_NAME = 'csrftoken'
 
 
